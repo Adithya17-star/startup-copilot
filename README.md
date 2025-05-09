@@ -30,12 +30,12 @@ git clone https://github.com/your-username/startup-copilot.git
 cd startup-copilot
 
 Step 2: Install Dependencies
-Before you can run the project, you need to install the required dependencies. Run the following command to install everything:
+You’ll need Node.js installed. If you don’t have it, download it here. Then, run the following command to install all required dependencies:
 
-```bash
+bash
+Copy
+Edit
 npm install
-This will install all the required dependencies listed in the package.json file.
-
 3. Start the Development Server
 To run the project locally in development mode:
 
