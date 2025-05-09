@@ -4,49 +4,49 @@ Startup Co-Pilot is an AI-powered tool designed to help entrepreneurs launch, va
 Built using React and Tailwind CSS, the app allows users to build production-ready apps with minimal effort, leveraging the latest technologies and AI capabilities.
 
 # Table of Contents
- Features
+ • Features
 
-Tech Stack
+• Tech Stack
 
-Getting Started
+• Getting Started
 
-Clone the Repository
+• Clone the Repository
 
-Install Dependencies
+• Install Dependencies
 
-Run the Development Server
+• Run the Development Server
 
-Make Changes
+• Make Changes
 
-Build for Production
+• Build for Production
 
-Folder Structure
+• Folder Structure
 
-Contributing
+• Contributing
 
-License
+• License
 
 # Features 🛠️
-AI-Powered Business Planning: Generate, validate, and refine your business ideas with AI-based suggestions and insights.
+• AI-Powered Business Planning: Generate, validate, and refine your business ideas with AI-based suggestions and insights.
 
-No-Code MVP Builder: Create your Minimum Viable Product (MVP) with a simple, no-code approach.
+• No-Code MVP Builder: Create your Minimum Viable Product (MVP) with a simple, no-code approach.
 
-Startup Guidance: Receive actionable advice on marketing, sales, product development, and more.
+• Startup Guidance: Receive actionable advice on marketing, sales, product development, and more.
 
-Personalized Roadmap: Build a tailored roadmap for your startup journey with real-time updates.
+• Personalized Roadmap: Build a tailored roadmap for your startup journey with real-time updates.
 
-User-Friendly UI: Clean, modern design with React and Tailwind CSS for responsive, fast loading times.
+• User-Friendly UI: Clean, modern design with React and Tailwind CSS for responsive, fast loading times.
 
 # Tech Stack 🔧
-Frontend: React, TypeScript
+• Frontend: React, TypeScript
 
-Styling: Tailwind CSS (for responsive and modern UI)
+• Styling: Tailwind CSS (for responsive and modern UI)
 
-Build Tool: Vite (Fast and optimized for React)
+• Build Tool: Vite (Fast and optimized for React)
 
-AI: Powered by Bolt (no-code AI solution for faster development)
+• AI: Powered by Bolt (no-code AI solution for faster development)
 
-Deployment: Vercel/Netlify (or your preferred platform)
+• Deployment: Vercel/Netlify (or your preferred platform)
 
 # Getting Started 🚀
 Step 1: Clone the Repository
