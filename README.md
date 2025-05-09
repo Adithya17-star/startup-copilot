@@ -29,8 +29,8 @@ To get started, first clone the repository to your local machine:
 git clone https://github.com/your-username/startup-copilot.git
 cd startup-copilot
 
-2. Install Dependencies
-You’ll need Node.js installed. If you don’t have it, download it here. Then, run:
+Step 2: Install Dependencies
+Before you can run the project, you need to install the required dependencies. Run the following command to install everything:
 
 ```bash
 npm install
@@ -39,7 +39,6 @@ This will install all the required dependencies listed in the package.json file.
 3. Start the Development Server
 To run the project locally in development mode:
 
-```bash
 npm run dev
 The app will be available at http://localhost:5173/.
 
@@ -49,16 +48,12 @@ You can start editing the project files in src/ (e.g., src/App.tsx). Your browse
 5. Build for Production
 When you're ready to deploy, you can build the project for production:
 
-```bash
 npm run build
 This will create an optimized build in the dist/ folder that you can deploy.
 
 # Folder Structure 📁
 Here's a breakdown of the main files and folders:
 
-php
-Copy
-Edit
 startup-copilot/
 ├── public/                  # Static assets (e.g., images, icons)
 │   └── vite.svg
@@ -71,6 +66,7 @@ startup-copilot/
 ├── index.html               # Main HTML file
 ├── tailwind.config.js       # Tailwind CSS configuration
 └── vite.config.ts           # Vite configuration
+
 # Contributing 🤝
 We welcome contributions to make Startup Co-Pilot even better! If you find any bugs, or have a feature request, please open an issue, or fork the repo and send a pull request.
 
