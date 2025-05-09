@@ -25,9 +25,7 @@ Deployment: Vercel/Netlify (or your preferred platform)
 1. Clone the Repository
 To get started, first clone the repository to your local machine:
 
-bash
-Copy
-Edit
+```bash
 git clone https://github.com/your-username/startup-copilot.git
 cd startup-copilot
 2. Install Dependencies
