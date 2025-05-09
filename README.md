@@ -22,7 +22,7 @@ AI: Powered by Bolt (no-code AI solution)
 Deployment: Vercel/Netlify (or your preferred platform)
 
 # Getting Started 🚀
-1. Clone the Repository
+### Step 1: Clone the Repository
 To get started, first clone the repository to your local machine:
 
 git clone https://github.com/your-username/startup-copilot.git
@@ -33,16 +33,16 @@ You’ll need Node.js installed. If you don’t have it, download it here. Then,
 
 npm install
 
-3. Start the Development Server
+Step 3. Start the Development Server
 To run the project locally in development mode:
 
 npm run dev
 The app will be available at http://localhost:5173/.
 
-4. Make Changes
+Step 4. Make Changes
 You can start editing the project files in src/ (e.g., src/App.tsx). Your browser will auto-refresh on file changes.
 
-5. Build for Production
+Step 5. Build for Production
 When you're ready to deploy, you can build the project for production:
 
 npm run build
