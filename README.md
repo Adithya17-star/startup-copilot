@@ -124,15 +124,15 @@ startup-copilot/
 We welcome contributions to make Startup Co-Pilot even better! If you have ideas for new features, encounter bugs, or want to improve the documentation, feel free to open an issue or submit a pull request.
 
 How to Contribute:
-Fork the repository.
+1. Fork the repository.
 
-Create a new branch for your feature (git checkout -b feature/your-feature).
+2. Create a new branch for your feature (git checkout -b feature/your-feature).
 
-Make your changes and commit them (git commit -m 'Add new feature').
+3. Make your changes and commit them (git commit -m 'Add new feature').
 
-Push to your branch (git push origin feature/your-feature).
+4. Push to your branch (git push origin feature/your-feature).
 
-Open a pull request and describe the changes you've made.
+5. Open a pull request and describe the changes you've made.
 
 # License 📄
 This project is licensed under the MIT License – see the LICENSE file for details.
