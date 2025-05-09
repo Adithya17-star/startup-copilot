@@ -53,7 +53,7 @@ Step 1: Clone the Repository
 Clone the repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/your-username/startup-copilot.git
+git clone https://github.com/Adithya17-star/startup-copilot.git
 ```
 Navigate to the project directory:
 
