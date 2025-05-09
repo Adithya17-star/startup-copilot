@@ -4,7 +4,7 @@ Startup Co-Pilot is an AI-powered tool designed to help entrepreneurs launch, va
 Built using React and Tailwind CSS, the app allows users to build production-ready apps with minimal effort, leveraging the latest technologies and AI capabilities.
 
 # Table of Contents
-Features
+ Features
 
 Tech Stack
 
@@ -52,32 +52,28 @@ Deployment: Vercel/Netlify (or your preferred platform)
 Step 1: Clone the Repository
 Clone the repository to your local machine using the following command:
 
-bash
-Copy
-Edit
+```bash
 git clone https://github.com/your-username/startup-copilot.git
+```
 Navigate to the project directory:
 
-bash
-Copy
-Edit
+```bash
 cd startup-copilot
+```
 Step 2: Install Dependencies
 Next, you need to install the required dependencies. Run the following command in your terminal:
 
-bash
-Copy
-Edit
+```bash
 npm install
+```
 This will install all the necessary libraries and tools for the project.
 
 Step 3: Run the Development Server
 Once the dependencies are installed, you can run the development server:
 
-bash
-Copy
-Edit
+```bash
 npm run dev
+```
 This will start the app, and you should see output similar to this:
 
 arduino
@@ -96,10 +92,9 @@ You can now make edits to the code. Any changes you make will be automatically r
 Step 5: Build for Production
 When you're ready to deploy the app, you can build it for production by running:
 
-bash
-Copy
-Edit
+```bash
 npm run build
+```
 This will create an optimized build in the dist/ folder, which can be deployed to your preferred hosting platform.
 
 # Folder Structure 📁
@@ -120,7 +115,8 @@ startup-copilot/
 ├── postcss.config.js        
 ├── vite.config.ts           
 ├── package.json             
-└── README.md     
+└── README.md
+```
 
 # Contributing 🤝
 We welcome contributions to make Startup Co-Pilot even better! If you have ideas for new features, encounter bugs, or want to improve the documentation, feel free to open an issue or submit a pull request.
