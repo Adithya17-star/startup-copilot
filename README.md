@@ -19,12 +19,12 @@ An AI-powered assistant to help entrepreneurs build, validate, and grow their st
 ```bash
 npm install
 npm run dev
-📦 Production Build
+## 📦 Production Build
 bash
 Copy
 Edit
 npm run build
-📁 Folder Structure
+## 📁 Folder Structure
 css
 Copy
 Edit
