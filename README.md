@@ -28,21 +28,18 @@ To get started, first clone the repository to your local machine:
 ```bash
 git clone https://github.com/your-username/startup-copilot.git
 cd startup-copilot
+
 2. Install Dependencies
 You’ll need Node.js installed. If you don’t have it, download it here. Then, run:
 
-bash
-Copy
-Edit
+```bash
 npm install
 This will install all the required dependencies listed in the package.json file.
 
 3. Start the Development Server
 To run the project locally in development mode:
 
-bash
-Copy
-Edit
+```bash
 npm run dev
 The app will be available at http://localhost:5173/.
 
@@ -52,9 +49,7 @@ You can start editing the project files in src/ (e.g., src/App.tsx). Your browse
 5. Build for Production
 When you're ready to deploy, you can build the project for production:
 
-bash
-Copy
-Edit
+```bash
 npm run build
 This will create an optimized build in the dist/ folder that you can deploy.
 
