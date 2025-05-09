@@ -1,7 +1,7 @@
-Startup Co-Pilot 🚀
+# Startup Co-Pilot 🚀
 An AI-powered assistant designed to help entrepreneurs build, validate, and scale their startup ideas. Powered by Bolt and Vite + React, this tool allows you to easily create and manage startup projects with no-code solutions.
 
-Features 🛠️
+# Features 🛠️
 AI-Powered Business Planning: Generate business ideas, validate them, and receive AI-based feedback on your startup journey.
 
 No-Code MVP Builder: Build a simple MVP (Minimum Viable Product) for your startup idea with just a few clicks.
@@ -10,7 +10,7 @@ Startup Advice: Get personalized advice and tools to optimize your startup proce
 
 User-Friendly UI: Clean, modern design built using React and Tailwind CSS.
 
-Tech Stack 🔧
+# Tech Stack 🔧
 Frontend: React, TypeScript
 
 Styling: Tailwind CSS
@@ -21,7 +21,7 @@ AI: Powered by Bolt (no-code AI solution)
 
 Deployment: Vercel/Netlify (or your preferred platform)
 
-Getting Started 🚀
+# Getting Started 🚀
 1. Clone the Repository
 To get started, first clone the repository to your local machine:
 
@@ -60,7 +60,7 @@ Edit
 npm run build
 This will create an optimized build in the dist/ folder that you can deploy.
 
-Folder Structure 📁
+# Folder Structure 📁
 Here's a breakdown of the main files and folders:
 
 php
@@ -78,7 +78,7 @@ startup-copilot/
 ├── index.html               # Main HTML file
 ├── tailwind.config.js       # Tailwind CSS configuration
 └── vite.config.ts           # Vite configuration
-Contributing 🤝
+# Contributing 🤝
 We welcome contributions to make Startup Co-Pilot even better! If you find any bugs, or have a feature request, please open an issue, or fork the repo and send a pull request.
 
 How to Contribute:
@@ -92,6 +92,6 @@ Push to the branch (git push origin feature/your-feature).
 
 Open a pull request with a description of your changes.
 
-License 📄
+# License 📄
 This project is licensed under the MIT License – see the LICENSE file for details.
 
