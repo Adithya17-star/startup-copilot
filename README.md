@@ -105,21 +105,22 @@ This will create an optimized build in the dist/ folder, which can be deployed t
 # Folder Structure 📁
 Here’s a breakdown of the project’s file structure:
 
+```bash
 startup-copilot/
-├── public/                  # Static assets
+├── public/                  
 │   └── vite.svg
 ├── src/
-│   ├── components/          # Reusable UI components
-│   ├── pages/               # Page components
-│   ├── App.tsx              # Main application component
-│   ├── main.tsx             # Entry point for the app
-│   └── index.css            # Global styles
-├── index.html               # Base HTML file
-├── tailwind.config.js       # Tailwind configuration
-├── postcss.config.js        # PostCSS config for Tailwind
-├── vite.config.ts           # Vite configuration
-├── package.json             # NPM dependencies and scripts
-└── README.md                # Project documentation
+│   ├── components/          
+│   ├── pages/               
+│   ├── App.tsx              
+│   ├── main.tsx             
+│   └── index.css            
+├── index.html               
+├── tailwind.config.js       
+├── postcss.config.js        
+├── vite.config.ts           
+├── package.json             
+└── README.md     
 
 # Contributing 🤝
 We welcome contributions to make Startup Co-Pilot even better! If you have ideas for new features, encounter bugs, or want to improve the documentation, feel free to open an issue or submit a pull request.
