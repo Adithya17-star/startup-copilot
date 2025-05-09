@@ -25,17 +25,14 @@ Deployment: Vercel/Netlify (or your preferred platform)
 1. Clone the Repository
 To get started, first clone the repository to your local machine:
 
-```bash
 git clone https://github.com/your-username/startup-copilot.git
 cd startup-copilot
 
 Step 2: Install Dependencies
 You’ll need Node.js installed. If you don’t have it, download it here. Then, run the following command to install all required dependencies:
 
-bash
-Copy
-Edit
 npm install
+
 3. Start the Development Server
 To run the project locally in development mode:
 
