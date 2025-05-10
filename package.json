@@ -11,7 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://adithyakakarla123.github.io/startup-copilot",
+  "homepage": "https://Adithya17-star.github.io/startup-copilot",
   "dependencies": {
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
