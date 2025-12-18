@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { RefreshCw, Edit2 } from 'lucide-react';
+import { RefreshCw, Edit2, Check } from 'lucide-react';
 import { useStartupContext } from '../../context/StartupContext';
 
 interface ElevatorPitchProps {
@@ -17,59 +17,52 @@ export const ElevatorPitch = ({ pitch }: ElevatorPitchProps) => {
     setIsEditing(false);
   };
 
-  // Format the pitch paragraphs
   const paragraphs = pitch.split('\n\n').filter(p => p.trim());
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-      <div className="bg-blue-50 px-6 py-4 flex justify-between items-center border-b border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900">Elevator Pitch</h3>
-        <div className="flex space-x-2">
+    <div className="group relative bg-slate-900/50 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+      <div className="bg-white/5 px-6 py-4 flex justify-between items-center border-b border-white/10">
+        <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+          Elevator Pitch
+        </h3>
+        <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <button
             onClick={() => setIsEditing(!isEditing)}
-            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors duration-200"
-            aria-label="Edit"
+            className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
           >
             <Edit2 className="h-4 w-4" />
           </button>
           <button
             onClick={() => regenerateSection('elevatorPitch')}
-            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors duration-200"
-            aria-label="Regenerate"
+            className="p-2 text-slate-400 hover:text-blue-400 hover:bg-blue-500/10 rounded-lg transition-colors"
           >
             <RefreshCw className="h-4 w-4" />
           </button>
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="p-8">
         {isEditing ? (
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in">
             <textarea
               value={editedPitch}
               onChange={(e) => setEditedPitch(e.target.value)}
-              className="w-full h-48 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Write your elevator pitch here..."
+              className="w-full h-64 px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all leading-relaxed"
             />
             <div className="flex justify-end">
               <button
-                onClick={() => setIsEditing(false)}
-                className="mr-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Cancel
-              </button>
-              <button
                 onClick={handleSave}
-                className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition-colors"
               >
-                Save
+                <Check className="h-4 w-4 mr-2" /> Save Changes
               </button>
             </div>
           </div>
         ) : (
-          <div className="prose max-w-none">
+          <div className="prose max-w-none text-slate-300 leading-relaxed">
             {paragraphs.map((paragraph, index) => (
-              <p key={index} className="mb-4 last:mb-0 text-gray-700 leading-relaxed">
+              <p key={index} className="mb-4 last:mb-0">
                 {paragraph}
               </p>
             ))}
