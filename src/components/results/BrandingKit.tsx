@@ -1,19 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { RefreshCw, Edit2, Palette } from 'lucide-react';
+import { RefreshCw, Edit2, Palette, Check } from 'lucide-react';
 import { useStartupContext } from '../../context/StartupContext';
 
 interface BrandingKitProps {
   branding: {
-    colors: {
-      primary: string;
-      secondary: string;
-      accent: string;
-    };
-    fonts: {
-      heading: string;
-      body: string;
-    };
+    colors: { primary: string; secondary: string; accent: string; };
+    fonts: { heading: string; body: string; };
     logoIdea: string;
   };
 }
@@ -28,231 +21,85 @@ export const BrandingKit = ({ branding }: BrandingKitProps) => {
     setIsEditing(false);
   };
 
-  const handleColorChange = (colorType: 'primary' | 'secondary' | 'accent', value: string) => {
-    setEditedBranding({
-      ...editedBranding,
-      colors: {
-        ...editedBranding.colors,
-        [colorType]: value
-      }
-    });
-  };
-
-  const handleFontChange = (fontType: 'heading' | 'body', value: string) => {
-    setEditedBranding({
-      ...editedBranding,
-      fonts: {
-        ...editedBranding.fonts,
-        [fontType]: value
-      }
-    });
-  };
-
-  const handleLogoIdeaChange = (value: string) => {
-    setEditedBranding({
-      ...editedBranding,
-      logoIdea: value
-    });
+  const handleColorChange = (key: 'primary' | 'secondary' | 'accent', val: string) => {
+    setEditedBranding({ ...editedBranding, colors: { ...editedBranding.colors, [key]: val } });
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-      <div className="bg-blue-50 px-6 py-4 flex justify-between items-center border-b border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900">Branding Kit</h3>
-        <div className="flex space-x-2">
-          <button
-            onClick={() => setIsEditing(!isEditing)}
-            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors duration-200"
-            aria-label="Edit"
-          >
-            <Edit2 className="h-4 w-4" />
-          </button>
-          <button
-            onClick={() => regenerateSection('brandingKit')}
-            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors duration-200"
-            aria-label="Regenerate"
-          >
-            <RefreshCw className="h-4 w-4" />
-          </button>
+    <div className="group relative bg-slate-900/50 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+      <div className="bg-white/5 px-6 py-4 flex justify-between items-center border-b border-white/10">
+        <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+          Visual Identity
+        </h3>
+        <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <button onClick={() => setIsEditing(!isEditing)} className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"><Edit2 className="h-4 w-4" /></button>
+          <button onClick={() => regenerateSection('brandingKit')} className="p-2 text-slate-400 hover:text-blue-400 hover:bg-blue-500/10 rounded-lg transition-colors"><RefreshCw className="h-4 w-4" /></button>
         </div>
       </div>
 
-      <div className="p-6">
-        {isEditing ? (
-          <div className="space-y-6">
-            <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-3">Colors</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-xs text-gray-500 mb-1">Primary</label>
-                  <div className="flex">
-                    <input
-                      type="color"
-                      value={editedBranding.colors.primary}
-                      onChange={(e) => handleColorChange('primary', e.target.value)}
-                      className="h-10 w-10 rounded-l-md border border-gray-300"
+      <div className="p-8 space-y-8">
+        {/* Colors */}
+        <div>
+          <h4 className="text-sm uppercase tracking-wider text-slate-500 font-semibold mb-4 flex items-center gap-2">
+            <Palette className="h-4 w-4" /> Color Palette
+          </h4>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {Object.entries(isEditing ? editedBranding.colors : branding.colors).map(([key, color]) => (
+              <div key={key} className="bg-slate-950/50 p-4 rounded-xl border border-white/5">
+                <div 
+                  className="h-16 rounded-lg shadow-lg mb-3 transition-transform hover:scale-105 cursor-pointer"
+                  style={{ backgroundColor: color }}
+                ></div>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-slate-400 capitalize">{key}</span>
+                  {isEditing ? (
+                    <input 
+                      type="text" 
+                      value={color}
+                      onChange={(e) => handleColorChange(key as any, e.target.value)}
+                      className="w-20 bg-transparent text-right text-sm text-white font-mono border-b border-slate-700 focus:border-blue-500 outline-none"
                     />
-                    <input
-                      type="text"
-                      value={editedBranding.colors.primary}
-                      onChange={(e) => handleColorChange('primary', e.target.value)}
-                      className="flex-1 h-10 px-3 py-2 border border-l-0 border-gray-300 rounded-r-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-500 mb-1">Secondary</label>
-                  <div className="flex">
-                    <input
-                      type="color"
-                      value={editedBranding.colors.secondary}
-                      onChange={(e) => handleColorChange('secondary', e.target.value)}
-                      className="h-10 w-10 rounded-l-md border border-gray-300"
-                    />
-                    <input
-                      type="text"
-                      value={editedBranding.colors.secondary}
-                      onChange={(e) => handleColorChange('secondary', e.target.value)}
-                      className="flex-1 h-10 px-3 py-2 border border-l-0 border-gray-300 rounded-r-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-500 mb-1">Accent</label>
-                  <div className="flex">
-                    <input
-                      type="color"
-                      value={editedBranding.colors.accent}
-                      onChange={(e) => handleColorChange('accent', e.target.value)}
-                      className="h-10 w-10 rounded-l-md border border-gray-300"
-                    />
-                    <input
-                      type="text"
-                      value={editedBranding.colors.accent}
-                      onChange={(e) => handleColorChange('accent', e.target.value)}
-                      className="flex-1 h-10 px-3 py-2 border border-l-0 border-gray-300 rounded-r-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    />
-                  </div>
+                  ) : (
+                    <span className="text-sm font-mono text-white">{color}</span>
+                  )}
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
 
-            <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-3">Fonts</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs text-gray-500 mb-1">Heading Font</label>
-                  <input
-                    type="text"
-                    value={editedBranding.fonts.heading}
-                    onChange={(e) => handleFontChange('heading', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-500 mb-1">Body Font</label>
-                  <input
-                    type="text"
-                    value={editedBranding.fonts.body}
-                    onChange={(e) => handleFontChange('body', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
+        {/* Fonts & Logo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h4 className="text-sm uppercase tracking-wider text-slate-500 font-semibold mb-4">Typography</h4>
+            <div className="space-y-4">
+              <div className="p-4 bg-slate-950/50 rounded-xl border border-white/5">
+                <p className="text-xs text-slate-500 mb-1">Heading</p>
+                <p className="text-xl text-white font-bold">{branding.fonts.heading}</p>
               </div>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-3">Logo Idea</h4>
-              <textarea
-                value={editedBranding.logoIdea}
-                onChange={(e) => handleLogoIdeaChange(e.target.value)}
-                className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-
-            <div className="flex justify-end">
-              <button
-                onClick={() => setIsEditing(false)}
-                className="mr-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSave}
-                className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Save
-              </button>
+              <div className="p-4 bg-slate-950/50 rounded-xl border border-white/5">
+                <p className="text-xs text-slate-500 mb-1">Body</p>
+                <p className="text-base text-white">{branding.fonts.body}</p>
+              </div>
             </div>
           </div>
-        ) : (
-          <div className="space-y-8">
-            <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-3 flex items-center">
-                <Palette className="h-4 w-4 mr-1 text-blue-500" /> 
-                Color Palette
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <div className="h-16 rounded-md shadow-sm" style={{ backgroundColor: branding.colors.primary }}></div>
-                  <div className="mt-2">
-                    <p className="text-xs text-gray-500">Primary</p>
-                    <p className="text-sm font-medium">{branding.colors.primary}</p>
-                  </div>
-                </div>
-                <div>
-                  <div className="h-16 rounded-md shadow-sm" style={{ backgroundColor: branding.colors.secondary }}></div>
-                  <div className="mt-2">
-                    <p className="text-xs text-gray-500">Secondary</p>
-                    <p className="text-sm font-medium">{branding.colors.secondary}</p>
-                  </div>
-                </div>
-                <div>
-                  <div className="h-16 rounded-md shadow-sm" style={{ backgroundColor: branding.colors.accent }}></div>
-                  <div className="mt-2">
-                    <p className="text-xs text-gray-500">Accent</p>
-                    <p className="text-sm font-medium">{branding.colors.accent}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-3">Typography</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="p-4 border border-gray-200 rounded-md">
-                  <p className="text-xs text-gray-500 mb-2">Heading Font</p>
-                  <p
-                    className="text-xl font-bold truncate"
-                    style={{ fontFamily: branding.fonts.heading }}
-                  >
-                    {branding.fonts.heading}
-                  </p>
-                </div>
-                <div className="p-4 border border-gray-200 rounded-md">
-                  <p className="text-xs text-gray-500 mb-2">Body Font</p>
-                  <p
-                    className="text-base truncate"
-                    style={{ fontFamily: branding.fonts.body }}
-                  >
-                    {branding.fonts.body}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-3">Logo Concept</h4>
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded-md">
-                <p className="text-gray-700 italic">{branding.logoIdea}</p>
-              </div>
-            </div>
-
-            <div className="p-4 border border-dashed border-gray-300 rounded-md bg-blue-50">
-              <p className="text-sm text-gray-600">
-                <span className="font-medium text-blue-600">Pro Tip:</span> Use these branding elements consistently across all your marketing materials, website, and presentations to build strong brand recognition.
+          
+          <div>
+            <h4 className="text-sm uppercase tracking-wider text-slate-500 font-semibold mb-4">Logo Concept</h4>
+            <div className="p-5 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl border border-white/5 h-full flex items-center">
+              <p className="text-slate-300 italic leading-relaxed">
+                "{branding.logoIdea}"
               </p>
             </div>
+          </div>
+        </div>
+
+        {isEditing && (
+          <div className="flex justify-end pt-4 border-t border-white/10">
+            <button onClick={handleSave} className="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition-colors">
+              <Check className="h-4 w-4 mr-2" /> Save Changes
+            </button>
           </div>
         )}
       </div>
