@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useState, FormEvent } from 'react';
+import { validateMarketIdea } from '../services/generationService';
+import { Activity, TrendingUp, Users } from 'lucide-react';
 
 interface MarketResult {
   score: number;
@@ -15,18 +17,15 @@ const MarketValidator: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!idea.trim()) return;
+    
     setLoading(true);
     setError('');
     setResult(null);
 
     try {
-      // Mock API call to backend (replace with your endpoint)
-      const response = await fetch('/api/validate-market', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idea }),
-      });
-      const data: MarketResult = await response.json();
+      // Use the simulated service instead of the broken fetch
+      const data = await validateMarketIdea(idea);
       setResult(data);
     } catch (err) {
       setError('Failed to validate idea. Try again later.');
@@ -36,48 +35,78 @@ const MarketValidator: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Market Validator</h2>
+    <div className="bg-white/10 backdrop-blur-md rounded-xl shadow-lg border border-white/20 overflow-hidden transition-all duration-300 hover:shadow-xl p-6">
+      <div className="flex items-center space-x-3 mb-6">
+        <Activity className="h-6 w-6 text-indigo-400" />
+        <h2 className="text-2xl font-bold text-white">AI Market Validator</h2>
+      </div>
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="idea" className="block text-sm font-medium text-gray-700">
-            Your Startup Idea
+          <label htmlFor="market-idea" className="block text-sm font-medium text-gray-300 mb-1">
+            Test a specific angle or feature
           </label>
-          <input
-            type="text"
-            id="idea"
-            value={idea}
-            onChange={(e) => setIdea(e.target.value)}
-            placeholder="e.g., AI-powered tutoring platform"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-            required
-          />
+          <div className="flex gap-2">
+            <input
+              type="text"
+              id="market-idea"
+              value={idea}
+              onChange={(e) => setIdea(e.target.value)}
+              placeholder="e.g., Subscription model for pet sitting"
+              className="flex-1 p-3 bg-slate-800/50 border border-slate-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+              required
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center"
+            >
+              {loading ? 'Analyzing...' : 'Validate'}
+            </button>
+          </div>
         </div>
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 disabled:bg-gray-400"
-        >
-          {loading ? 'Analyzing...' : 'Validate Idea'}
-        </button>
       </form>
 
-      {error && <p className="mt-4 text-red-600">{error}</p>}
+      {error && <p className="mt-4 text-red-400 bg-red-900/20 p-3 rounded-md border border-red-900/50">{error}</p>}
 
       {result && (
-        <div className="mt-6 p-4 bg-gray-50 rounded-md">
-          <h3 className="text-lg font-semibold text-gray-800">Market Insights</h3>
-          <p className="mt-2 text-gray-600">
-            <strong>Viability Score:</strong> {result.score}/100
-          </p>
-          <p className="mt-2 text-gray-600">
-            <strong>Top Competitors:</strong>{' '}
-            {result.competitors?.join(', ') || 'None identified'}
-          </p>
-          <p className="mt-2 text-gray-600">
-            <strong>Market Trends:</strong>{' '}
-            {result.trends?.join('; ') || 'No trends available'}
-          </p>
+        <div className="mt-8 animate-fade-in space-y-6">
+          <div className="bg-indigo-900/30 p-6 rounded-xl border border-indigo-500/30">
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="font-semibold text-indigo-200">Viability Score</h3>
+              <span className={`text-2xl font-bold ${result.score > 80 ? 'text-green-400' : 'text-indigo-400'}`}>
+                {result.score}/100
+              </span>
+            </div>
+            <div className="w-full bg-slate-700 rounded-full h-2.5">
+              <div 
+                className="bg-indigo-500 h-2.5 rounded-full transition-all duration-1000" 
+                style={{ width: `${result.score}%` }}
+              ></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-slate-800/50 p-5 rounded-xl border border-white/10">
+              <div className="flex items-center gap-2 mb-3 text-gray-200 font-semibold">
+                <Users className="h-4 w-4 text-blue-400" />
+                <h3>Potential Competitors</h3>
+              </div>
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                {result.competitors.map((comp, i) => <li key={i}>{comp}</li>)}
+              </ul>
+            </div>
+            
+            <div className="bg-slate-800/50 p-5 rounded-xl border border-white/10">
+              <div className="flex items-center gap-2 mb-3 text-gray-200 font-semibold">
+                <TrendingUp className="h-4 w-4 text-green-400" />
+                <h3>Market Trends</h3>
+              </div>
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                {result.trends.map((trend, i) => <li key={i}>{trend}</li>)}
+              </ul>
+            </div>
+          </div>
         </div>
       )}
     </div>
