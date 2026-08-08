@@ -27,3 +27,4 @@ dist-ssr
 node_modules/
 .bun/
 node_modules/
+dist
